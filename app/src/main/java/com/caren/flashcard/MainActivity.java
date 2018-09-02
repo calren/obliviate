@@ -9,6 +9,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView questionText;
 
+    boolean mIsDisplayingAnswer = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
         questionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                questionText.setText("Barack Obama");
+                if (mIsDisplayingAnswer) {
+                    questionText.setText(getResources().getString(R.string.question_1));
+                    questionText.setBackgroundColor(getResources().getColor(R.color.question_background_color, null));
+                    mIsDisplayingAnswer = false;
+                } else {
+                    questionText.setText(getResources().getString(R.string.question_1_answer));
+                    questionText.setBackgroundColor(getResources().getColor(R.color.answer_background_color, null));
+                    mIsDisplayingAnswer = true;
+                }
             }
         });
     }
