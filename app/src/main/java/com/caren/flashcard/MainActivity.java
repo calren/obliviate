@@ -1,5 +1,6 @@
 package com.caren.flashcard;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 questionText.setText("Barack Obama");
+            }
+        });
+
+        findViewById(R.id.add_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.getContext().startActivity(new Intent(MainActivity.this, AddCardActivity.class));
             }
         });
     }
